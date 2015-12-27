@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'catatan/base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+{% block content %}
+<div class="post">
+    {% if post.published_date %}
+    <div class="date">
+        {{ post.published_date }}
+    </div>
+    {% endif %}
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.text|linebreaks }}</p>
+</div>
+{% endblock %}
+</body>
+</html>
