@@ -1,32 +1,20 @@
-<!DOCTYPE html>
 {% extends 'catatan/base.html' %}
-{% load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Private Blog :P</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-</head>
-<body>
+
 {% block content %}
 {% for post in list_post %}
 <div class="post">
     <div class="date">
         {% if user.is_authenticated %}
         <a href="{% url 'post_edit' post_id=post.pk %}">
-            <i class="fa fa-pencil-square-o fa-2x"></i>
+            <i class="fa fa-pencil-square-o fa-2x" data-toggle="tooltip-arrow" data-placement="right"
+               title="Edit Post"></i>
         </a>
         {% endif %}
         {{ post.published_date }} <br/>
     </div>
     <h1><a href="{%	url	'post_detail' post_id=post.pk %}">{{ post.title }}</a></h1>
     <p>{{ post.text|linebreaks }}</p>
+    <a href="{% url 'post_detail' post_id=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
 </div>
 {% endfor %}
 {% endblock %}
-</body>
-</html>

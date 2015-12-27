@@ -1,17 +1,5 @@
-<!DOCTYPE html>
 {% extends 'catatan/base.html' %}
-{% load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Private Blog :P</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-</head>
-<body>
+
 {% block content %}
 <h1>New post</h1>
 <form method="POST" class="post-form">{% csrf_token %}
@@ -19,5 +7,3 @@
     <button type="submit" class="save btn btn-default">Save</button>
 </form>
 {% endblock %}
-</body>
-</html>
